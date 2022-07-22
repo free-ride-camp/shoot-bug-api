@@ -1,0 +1,13 @@
+package org.freeride.shootbug;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class ShootBugApiApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
