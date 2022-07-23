@@ -1,13 +1,20 @@
 package org.freeride.shootbug;
 
+import org.freeride.shootbug.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 class ShootBugApiApplicationTests {
 
+    @Resource
+    private UserMapper userMapper;
+
     @Test
-    void contextLoads() {
+    void testUserMapper() {
+        System.out.println(userMapper.findUserById(1));
     }
 
 }
