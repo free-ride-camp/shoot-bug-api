@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- changeset zenox:init
+-- changeset zenox:20220724
 
 drop table if exists user;
 create table if not exists user (
@@ -16,11 +16,19 @@ create table if not exists user (
     fields json null
 );
 
-drop table if exists user_roles;
-create table if not exists user_roles (
-    name varchar(255) not null,
-    role varchar(255) not null,
-    constraint user_role_key primary key(name, role)
+drop table if exists role;
+create table if not exists role (
+    id integer auto_increment primary key,
+    name varchar(255) not null
+);
+
+drop table if exists user_role;
+create table if not exists user_role (
+    user_id integer not null,
+    role_id integer not null,
+    constraint user_role_pkey primary key(user_id, role_id),
+    constraint user_id_fk foreign key(user_id) references user(id),
+    constraint role_fk foreign key(role_id) references role(id)
 );
 
 drop table if exists tag;

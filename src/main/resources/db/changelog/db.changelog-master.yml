@@ -1,3 +1,3 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/sql/init.sql
+      file: db/changelog/sql/20220724.sql

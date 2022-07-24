@@ -43,8 +43,9 @@ public class SecurityConfig {
         manager.setDataSource(dataSource);
         manager.setUsersByUsernameQuery(
                 "select name, password, true from user where name=?");
-        manager.setAuthoritiesByUsernameQuery(
-                "select name, role from user_roles where name=?");
+        manager.setAuthoritiesByUsernameQuery("select u.name, r.name from user_role ur " +
+                "join user u on u.id = ur.user_id and u.name=? " +
+                "join role r on r.id = ur.role_id");
         return manager;
     }
 }
