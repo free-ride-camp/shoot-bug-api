@@ -1,6 +1,6 @@
 -- liquibase formatted sql
 
--- changeset zenox:20220724
+-- changeset zenox:2022072401
 
 drop table if exists user;
 create table if not exists user (

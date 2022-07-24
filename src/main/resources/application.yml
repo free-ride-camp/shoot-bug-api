@@ -9,3 +9,4 @@ spring:
     password: 123456
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yml
+    drop-first: false
