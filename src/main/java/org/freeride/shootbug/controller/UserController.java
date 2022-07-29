@@ -1,6 +1,7 @@
 package org.freeride.shootbug.controller;
 
 import org.freeride.shootbug.dto.request.LoginRequest;
+import org.freeride.shootbug.dto.request.RegisterRequest;
 import org.freeride.shootbug.util.TokenUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-public class LoginController {
+public class UserController {
 
     @Resource
     private AuthenticationManager authenticationManager;
@@ -24,9 +25,14 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest loginRequest) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-        UserDetails details = userDetailsService.loadUserByUsername(loginRequest.getUsername());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getPrincipal(), loginRequest.getPassword()));
+        UserDetails details = userDetailsService.loadUserByUsername(loginRequest.getPrincipal());
         return TokenUtil.generateJwt(details);
+    }
+
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest registerRequest) {
+        return null;
     }
 
     @GetMapping("/resource")

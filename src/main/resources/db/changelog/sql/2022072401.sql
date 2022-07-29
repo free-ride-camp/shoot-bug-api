@@ -5,7 +5,7 @@
 drop table if exists user;
 create table if not exists user (
     id integer auto_increment primary key,
-    name varchar(255) not null,
+    nickname varchar(255) not null,
     password varchar(255) not null,
     email varchar(255) not null,
     phone varchar(255) null,

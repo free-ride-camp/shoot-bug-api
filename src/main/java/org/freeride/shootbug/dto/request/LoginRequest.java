@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class LoginRequest {
-    private String username;
+    //用户标识，可以是手机、邮箱
+    private String principal;
     private String password;
 }

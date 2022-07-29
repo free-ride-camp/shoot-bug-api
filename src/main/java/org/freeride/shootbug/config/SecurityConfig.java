@@ -27,7 +27,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
-        return http.csrf().disable().authorizeRequests().antMatchers("/login").permitAll().anyRequest().authenticated()
+        return http.csrf().disable().authorizeRequests().antMatchers("/login", "/register").permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(new JwtFilter(userDetailsService), UsernamePasswordAuthenticationFilter.class).build();
     }
@@ -38,13 +38,13 @@ public class SecurityConfig {
     }
 
     @Bean
-    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource, PasswordEncoder passwordEncoder) {
+    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager manager = new JdbcUserDetailsManager();
         manager.setDataSource(dataSource);
         manager.setUsersByUsernameQuery(
-                "select name, password, true from user where name=?");
-        manager.setAuthoritiesByUsernameQuery("select u.name, r.name from user_role ur " +
-                "join user u on u.id = ur.user_id and u.name=? " +
+                "select phone, password, true from user where email=? or phone=?");
+        manager.setAuthoritiesByUsernameQuery("select u.phone, r.name from user_role ur " +
+                "join user u on u.id = ur.user_id and (u.email=? or u.phone=?)" +
                 "join role r on r.id = ur.role_id");
         return manager;
     }

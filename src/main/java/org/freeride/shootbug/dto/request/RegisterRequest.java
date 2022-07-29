@@ -1,21 +1,24 @@
-package org.freeride.shootbug.entity;
+package org.freeride.shootbug.dto.request;
 
 import lombok.Data;
 import org.freeride.shootbug.entity.type.GenderEnum;
 
 import java.util.List;
 
+/**
+ * @author ZhaoHe(hezhao @ dianhun.cn)
+ * @date 2022/7/29 17:03
+ */
+
 @Data
-public class User {
-    private Integer id;
-    private String nickname;
-    private String password;
+public class RegisterRequest {
     private String email;
     private String phone;
-    private String avatarUrl;
+    private String verifyCode;
+    private String nickname;
+    private String password;
     private GenderEnum gender;
     private Integer age;
     private String city;
     private List<String> fields;
-    //todo 经验值目前不需要
 }
