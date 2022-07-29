@@ -1,7 +1,7 @@
 package org.freeride.shootbug.mapper;
 
 import org.apache.ibatis.annotations.*;
-import org.freeride.shootbug.entity.User;
+import org.freeride.shootbug.entity.db.User;
 import org.freeride.shootbug.mapper.handler.JsonTypeHandler;
 
 @Mapper

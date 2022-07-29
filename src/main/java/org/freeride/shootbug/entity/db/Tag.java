@@ -1,4 +1,4 @@
-package org.freeride.shootbug.entity;
+package org.freeride.shootbug.entity.db;
 
 import lombok.Data;
 

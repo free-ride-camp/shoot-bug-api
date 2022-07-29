@@ -2,7 +2,7 @@ package org.freeride.shootbug.mapper;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
-import org.freeride.shootbug.entity.Post;
+import org.freeride.shootbug.entity.db.Post;
 import org.freeride.shootbug.mapper.handler.JsonTypeHandler;
 
 @Mapper

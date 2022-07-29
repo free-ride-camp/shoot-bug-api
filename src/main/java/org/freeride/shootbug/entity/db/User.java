@@ -1,7 +1,7 @@
-package org.freeride.shootbug.entity;
+package org.freeride.shootbug.entity.db;
 
 import lombok.Data;
-import org.freeride.shootbug.entity.type.GenderEnum;
+import org.freeride.shootbug.entity.db.type.GenderEnum;
 
 import java.util.List;
 

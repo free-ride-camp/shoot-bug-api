@@ -1,7 +1,7 @@
-package org.freeride.shootbug.entity;
+package org.freeride.shootbug.entity.db;
 
 import lombok.Data;
-import org.freeride.shootbug.entity.type.PostStatusEnum;
+import org.freeride.shootbug.entity.db.type.PostStatusEnum;
 
 import java.time.LocalDateTime;
 import java.util.List;
