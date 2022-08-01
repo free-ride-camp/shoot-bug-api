@@ -17,5 +17,4 @@ public class User {
     private Integer age;
     private String city;
     private List<String> fields;
-    //todo 经验值目前不需要
 }

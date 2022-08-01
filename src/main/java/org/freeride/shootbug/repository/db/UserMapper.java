@@ -1,8 +1,8 @@
-package org.freeride.shootbug.mapper;
+package org.freeride.shootbug.repository.db;
 
 import org.apache.ibatis.annotations.*;
 import org.freeride.shootbug.entity.db.User;
-import org.freeride.shootbug.mapper.handler.JsonTypeHandler;
+import org.freeride.shootbug.repository.db.handler.JsonTypeHandler;
 
 @Mapper
 public interface UserMapper {
@@ -12,5 +12,7 @@ public interface UserMapper {
             @Result(column = "fields", property = "fields", typeHandler = JsonTypeHandler.class),
     })
     User findUserById(@Param("id") Integer id);
+
+
 
 }

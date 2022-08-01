@@ -14,7 +14,7 @@ import java.util.List;
 public class RegisterRequest {
     private String email;
     private String phone;
-    private String verifyCode;
+    private String verificationCode;
     private String nickname;
     private String password;
     private GenderEnum gender;

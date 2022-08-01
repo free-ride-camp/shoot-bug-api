@@ -1,6 +1,6 @@
 package org.freeride.shootbug;
 
-import org.freeride.shootbug.mapper.UserMapper;
+import org.freeride.shootbug.repository.db.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

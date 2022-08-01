@@ -1,4 +1,4 @@
-package org.freeride.shootbug.mapper.handler;
+package org.freeride.shootbug.repository.db.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
