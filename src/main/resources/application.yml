@@ -3,6 +3,11 @@ mybatis:
     map-underscore-to-camel-case: true
 
 spring:
+  mail:
+    properties:
+      mail.smtp.connectionTimeout: 5000
+      mail.smtp.timeout: 3000
+      mail.smtp.writetimeout: 5000
   datasource:
     url: jdbc:mysql://localhost:3306/shoot-bug
     username: root

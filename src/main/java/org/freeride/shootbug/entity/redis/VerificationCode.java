@@ -10,13 +10,13 @@ import org.springframework.data.redis.core.RedisHash;
  */
 
 @Getter
-@RedisHash(value = "VerifyCode", timeToLive = 300)
+@RedisHash(value = "VerificationCode", timeToLive = 300)
 public class VerificationCode {
 
     @Id
-    private String code;
-
     private Integer userId;
+
+    private String code;
 
     public VerificationCode(Integer userId, String code) {
         this.userId = userId;

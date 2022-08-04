@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface VerificationCodeRepository extends CrudRepository<VerificationCode, String> {
+public interface VerificationCodeRepository extends CrudRepository<VerificationCode, Integer> {
 }

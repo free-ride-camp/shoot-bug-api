@@ -1,7 +1,9 @@
 package org.freeride.shootbug.service.impl;
 
+import liquibase.repackaged.org.apache.commons.lang3.RandomStringUtils;
 import org.freeride.shootbug.dto.request.RegisterRequest;
 import org.freeride.shootbug.entity.db.User;
+import org.freeride.shootbug.entity.redis.VerificationCode;
 import org.freeride.shootbug.repository.db.UserMapper;
 import org.freeride.shootbug.repository.redis.VerificationCodeRepository;
 import org.freeride.shootbug.service.UserService;
@@ -34,6 +36,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String sendVerificationCode(Integer userId) {
-        return null;
+        String code = RandomStringUtils.randomNumeric(4);
+        VerificationCode verificationCode = new VerificationCode(userId, code);
+        verificationCodeRepository.save(verificationCode);
+        //todo 将验证码发送到邮箱
+        return code;
     }
 }
