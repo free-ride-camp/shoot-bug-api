@@ -1,7 +1,10 @@
 package org.freeride.shootbug.service.impl;
 
 import org.freeride.shootbug.service.EmailService;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author ZhaoHe(hezhao @ dianhun.cn)
@@ -11,8 +14,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailServiceImpl implements EmailService {
 
+    @Resource
+    private JavaMailSender javaMailSender;
+
     @Override
     public void sendSimpleTextMail(String mailMessage) {
-
     }
 }
