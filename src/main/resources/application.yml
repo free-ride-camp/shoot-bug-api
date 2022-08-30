@@ -8,7 +8,7 @@ spring:
       mail.smtp.connectionTimeout: 5000
       mail.smtp.timeout: 3000
       mail.smtp.writetimeout: 5000
-    port: 465
+    port: 25
     host: xxx
     password: xxx
     username: xxx
