@@ -7,8 +7,9 @@ package org.freeride.shootbug.service;
 
 public interface EmailService {
     /**
-     * 发送文字email
-     * @param mailMessage
+     * 发送验证码到指定邮箱
+     * @param to
+     * @param verificationCode
      */
-    void sendSimpleTextMail(String mailMessage);
+    void sendVerificationCode(String to, String verificationCode);
 }

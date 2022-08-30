@@ -9,15 +9,15 @@ import org.springframework.http.HttpStatus;
  */
 
 @Getter
-public class ApiResponseException extends RuntimeException {
+public class ApiException extends RuntimeException {
     private HttpStatus httpStatus;
 
-    public ApiResponseException(String message) {
+    public ApiException(String message) {
         super(message);
         this.httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
     }
 
-    public ApiResponseException(HttpStatus httpStatus, String message) {
+    public ApiException(HttpStatus httpStatus, String message) {
         super(message);
         this.httpStatus = httpStatus;
     }

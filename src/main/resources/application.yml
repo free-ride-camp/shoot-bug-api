@@ -19,3 +19,9 @@ spring:
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yml
     drop-first: false
+
+application:
+  mail:
+    subject: shoot-bug验证码
+    templates:
+      verification-code: 你的验证码是%s，有效期%s秒
