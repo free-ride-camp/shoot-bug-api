@@ -1,6 +1,7 @@
 package org.freeride.shootbug.dto;
 
 import lombok.Data;
+import org.springframework.http.HttpStatus;
 
 @Data
 public class ApiResponse<T> {
@@ -17,14 +18,14 @@ public class ApiResponse<T> {
         ApiResponse<T> response = new ApiResponse<>();
         response.setMsg("success");
         response.setData(data);
-        response.setHttpCode(200);
+        response.setHttpCode(HttpStatus.OK.value());
         return response;
     }
 
-    public static <T> ApiResponse<T> fail(String message, Integer httpCode) {
+    public static <T> ApiResponse<T> fail(String message, HttpStatus httpStatus) {
         ApiResponse<T> response = new ApiResponse<>();
         response.setMsg(message);
-        response.setHttpCode(httpCode);
+        response.setHttpCode(httpStatus.value());
         return response;
     }
 }
