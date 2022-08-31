@@ -6,7 +6,6 @@ import org.freeride.shootbug.service.UserService;
 import org.freeride.shootbug.util.TokenUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,13 +29,7 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest loginRequest) {
-        //todo globalExceptionHandler
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getPrincipal(), loginRequest.getPassword()));
-        } catch (AuthenticationException ae) {
-            //todo 校验失败的情况
-            throw new RuntimeException();
-        }
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getPrincipal(), loginRequest.getPassword()));
         UserDetails details = userDetailsService.loadUserByUsername(loginRequest.getPrincipal());
         return TokenUtil.generateJwt(details);
     }
