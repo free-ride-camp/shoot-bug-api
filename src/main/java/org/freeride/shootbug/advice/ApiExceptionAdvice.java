@@ -6,11 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
 
 /**
  * @author ZhaoHe(hezhao @ dianhun.cn)
@@ -44,6 +47,8 @@ public class ApiExceptionAdvice {
             case BadCredentialsException bce -> ApiResponse.fail(BAD_CREDENTIALS_EXCEPTION_RESPONSE_TEXT, HttpStatus.UNAUTHORIZED);
             case AccessDeniedException ade -> ApiResponse.fail(AUTHORIZATION_EXCEPTION_RESPONSE_TEXT, HttpStatus.FORBIDDEN);
             case AuthenticationException ae -> ApiResponse.fail(AUTHENTICATION_EXCEPTION_RESPONSE_TEXT, HttpStatus.UNAUTHORIZED);
+            case MethodArgumentNotValidException me -> ApiResponse.fail(me.getBindingResult().getFieldError().getDefaultMessage(), HttpStatus.BAD_REQUEST);
+            case ConstraintViolationException cve -> ApiResponse.fail(cve.getConstraintViolations().stream().map(ConstraintViolation::getMessage).findAny().orElse(GLOBAL_EXCEPTION_RESPONSE_TEXT), HttpStatus.BAD_REQUEST);
             default -> ApiResponse.fail(GLOBAL_EXCEPTION_RESPONSE_TEXT, HttpStatus.INTERNAL_SERVER_ERROR);
         };
     }
