@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -30,6 +31,7 @@ public class EmailServiceImpl implements EmailService {
     private String verificationCodeTemplate;
 
     @Override
+    @Async
     public void sendVerificationCode(String to, String verificationCode) {
         SimpleMailMessage mail = new SimpleMailMessage(templateMail);
         mail.setText(String.format(verificationCodeTemplate, verificationCode, Constant.VERIFICATION_CODE_TTL_SECONDS));

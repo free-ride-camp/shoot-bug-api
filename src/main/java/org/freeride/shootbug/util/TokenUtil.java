@@ -2,10 +2,11 @@ package org.freeride.shootbug.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.freeride.shootbug.entity.db.type.RoleEnum;
 
 import javax.crypto.SecretKey;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -15,11 +16,11 @@ public class TokenUtil {
 
     private static final long EXPIRE_DURATION = TimeUnit.DAYS.toMillis(7);
 
-    public static String generateJwt(UserDetails userDetails) {
-        Map<String, Object> claims = Map.of("roles", userDetails.getAuthorities());
+    public static String generateJwt(String username, List<RoleEnum> roles) {
+        Map<String, Object> claims = Map.of("roles", roles);
         return Jwts.builder().setIssuer("shoot-bug")
                 .setClaims(claims)
-                .setSubject(userDetails.getUsername())
+                .setSubject(username)
                 .setExpiration(generateExpire())
                 .setIssuedAt(new Date())
                 .signWith(KEY).compact();

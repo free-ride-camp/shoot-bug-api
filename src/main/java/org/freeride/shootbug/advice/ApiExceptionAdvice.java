@@ -40,7 +40,7 @@ public class ApiExceptionAdvice {
     public ApiResponse<Object> handleGlobalException(HttpServletRequest request, Exception e) {
         log.error("全局异常捕获：", e);
         return switch (e) {
-            case ResponseStatusException rse -> ApiResponse.fail(rse.getMessage(), rse.getStatus());
+            case ResponseStatusException rse -> ApiResponse.fail(rse.getReason(), rse.getStatus());
             case BadCredentialsException bce -> ApiResponse.fail(BAD_CREDENTIALS_EXCEPTION_RESPONSE_TEXT, HttpStatus.UNAUTHORIZED);
             case AccessDeniedException ade -> ApiResponse.fail(AUTHORIZATION_EXCEPTION_RESPONSE_TEXT, HttpStatus.FORBIDDEN);
             case AuthenticationException ae -> ApiResponse.fail(AUTHENTICATION_EXCEPTION_RESPONSE_TEXT, HttpStatus.UNAUTHORIZED);

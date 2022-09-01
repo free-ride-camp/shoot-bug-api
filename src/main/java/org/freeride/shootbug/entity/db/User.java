@@ -2,6 +2,7 @@ package org.freeride.shootbug.entity.db;
 
 import lombok.Data;
 import org.freeride.shootbug.entity.db.type.GenderEnum;
+import org.freeride.shootbug.entity.db.type.RoleEnum;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public class User {
     private Integer age;
     private String city;
     private List<String> fields;
+
+    private transient List<RoleEnum> roles;
 }

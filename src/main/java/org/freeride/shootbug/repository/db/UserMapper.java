@@ -13,6 +13,8 @@ public interface UserMapper {
     })
     User findUserById(@Param("id") Integer id);
 
-
+    @Options(useGeneratedKeys = true, keyProperty = "id")
+    @Insert("insert into user values (null, #{nickname}, #{password}, #{email}, #{phone}, #{avatarUrl}, #{gender}, #{age}, #{city}, #{fields,typeHandler=org.freeride.shootbug.repository.db.handler.JsonTypeHandler})")
+    int insertUser(User user);
 
 }

@@ -14,12 +14,12 @@ import org.springframework.data.redis.core.RedisHash;
 public class VerificationCode {
 
     @Id
-    private Integer userId;
+    private final String email;
 
-    private String code;
+    private final String code;
 
-    public VerificationCode(Integer userId, String code) {
-        this.userId = userId;
+    public VerificationCode(String email, String code) {
+        this.email = email;
         this.code = code;
     }
 }

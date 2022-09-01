@@ -11,5 +11,5 @@ import org.freeride.shootbug.entity.db.User;
 public interface UserService {
     User registerUser(RegisterRequest registerRequest);
 
-    String sendVerificationCode(Integer userId);
+    String sendVerificationCode(String email);
 }
