@@ -13,7 +13,7 @@ spring:
     password: xxx
     username: xxx
   datasource:
-    url: jdbc:mysql://localhost:3306/shoot-bug
+    url: xxx
     username: xxx
     password: xxx
   liquibase:
