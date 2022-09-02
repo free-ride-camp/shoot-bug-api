@@ -12,6 +12,7 @@ import org.freeride.shootbug.repository.db.UserRoleMapper;
 import org.freeride.shootbug.repository.redis.VerificationCodeRepository;
 import org.freeride.shootbug.service.EmailService;
 import org.freeride.shootbug.service.UserService;
+import org.freeride.shootbug.annotation.RateLimited;
 import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author ZhaoHe(hezhao @ dianhun.cn)
@@ -84,8 +86,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @RateLimited(value = "sendVerificationCode", period = 30, requestNum = 1, unit = TimeUnit.SECONDS)
     public String sendVerificationCode(String email) {
         //todo 通过专门的限流机制，防止短时间内发送email
+        //限流策略：可以通过注解指定限流时间间隔和限流量
+        //限流实现：spring data redis + aop，使用令牌桶算法
         if (verificationCodeRepository.existsById(email)) {
             throw new ApiException("请稍后获取验证码");
         }
