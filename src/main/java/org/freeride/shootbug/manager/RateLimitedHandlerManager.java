@@ -1,6 +1,7 @@
 package org.freeride.shootbug.manager;
 
-import org.freeride.shootbug.handler.RateLimitedHandler;
+import org.freeride.shootbug.exception.ApiException;
+import org.freeride.shootbug.handler.AbstractRateLimitedHandler;
 import org.freeride.shootbug.handler.type.RateLimitedType;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -23,8 +24,8 @@ public class RateLimitedHandlerManager implements ApplicationContextAware {
         this.applicationContext = applicationContext;
     }
 
-    public RateLimitedHandler getHandlerByType(RateLimitedType type) {
-        Collection<RateLimitedHandler> handlers = applicationContext.getBeansOfType(RateLimitedHandler.class).values();
-        return handlers.stream().filter(r -> r.supports(type)).findAny().orElseThrow();
+    public AbstractRateLimitedHandler getHandlerByType(RateLimitedType type) {
+        Collection<AbstractRateLimitedHandler> handlers = applicationContext.getBeansOfType(AbstractRateLimitedHandler.class).values();
+        return handlers.stream().filter(r -> r.supports(type)).findAny().orElseThrow(() -> new ApiException("不支持该限流策略"));
     }
 }

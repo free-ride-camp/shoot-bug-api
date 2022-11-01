@@ -2,9 +2,7 @@ package org.freeride.shootbug.annotation;
 
 import org.freeride.shootbug.handler.type.RateLimitedType;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -14,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 @Target(ElementType.METHOD)
 @Inherited
+@Retention(RetentionPolicy.RUNTIME)
 public @interface RateLimited {
 
     /**

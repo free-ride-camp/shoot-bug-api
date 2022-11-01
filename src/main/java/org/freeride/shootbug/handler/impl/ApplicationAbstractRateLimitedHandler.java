@@ -1,7 +1,7 @@
 package org.freeride.shootbug.handler.impl;
 
 import org.freeride.shootbug.bo.RateLimitedBO;
-import org.freeride.shootbug.handler.RateLimitedHandler;
+import org.freeride.shootbug.handler.AbstractRateLimitedHandler;
 import org.freeride.shootbug.handler.type.RateLimitedType;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ApplicationRateLimitedHandler implements RateLimitedHandler {
+public class ApplicationAbstractRateLimitedHandler extends AbstractRateLimitedHandler {
 
     @Override
     public boolean supports(RateLimitedType type) {
@@ -20,6 +20,6 @@ public class ApplicationRateLimitedHandler implements RateLimitedHandler {
 
     @Override
     public boolean isRequestLimited(RateLimitedBO rateLimitedInfo) {
-        return false;
+        return super.doCheck(rateLimitedInfo.getKey(), rateLimitedInfo.getRequestNum(), rateLimitedInfo.getPeriod(), rateLimitedInfo.getUnit());
     }
 }
