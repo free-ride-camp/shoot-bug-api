@@ -6,11 +6,11 @@ local lastReqMillis = redis.call('hget', key, 'lastReq')
 local ticksLeft = redis.call('hget', key, 'bucketNum')
 local result = false
 
-if lastReqMillis == nil then
+if lastReqMillis == false then
     lastReqMillis = nowMillis
 end
 
-if ticksLeft == nil then
+if ticksLeft == false then
     ticksLeft = ticksPerPeriod
 end
 

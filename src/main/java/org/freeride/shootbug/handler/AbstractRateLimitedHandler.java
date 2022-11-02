@@ -35,7 +35,7 @@ public abstract class AbstractRateLimitedHandler {
     public abstract boolean isRequestLimited(RateLimitedBO rateLimitedInfo);
 
     protected boolean doCheck(String key, int limitedNum, long periodDuration, TimeUnit unit) {
-        long durationMillis = unit.convert(periodDuration, TimeUnit.MILLISECONDS);
-        return stringRedisTemplate.execute(bucketRateLimiterScript, List.of(key), String.valueOf(ZonedDateTime.now().toEpochSecond()), String.valueOf(limitedNum), String.valueOf(durationMillis));
+        long durationMillis = TimeUnit.MILLISECONDS.convert(periodDuration, unit);
+        return stringRedisTemplate.execute(bucketRateLimiterScript, List.of(key), String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli()), String.valueOf(limitedNum), String.valueOf(durationMillis));
     }
 }

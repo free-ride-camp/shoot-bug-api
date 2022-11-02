@@ -7,6 +7,7 @@ import org.freeride.shootbug.entity.db.User;
 import org.freeride.shootbug.entity.db.type.RoleEnum;
 import org.freeride.shootbug.entity.redis.VerificationCode;
 import org.freeride.shootbug.exception.ApiException;
+import org.freeride.shootbug.handler.type.RateLimitedType;
 import org.freeride.shootbug.repository.db.RoleMapper;
 import org.freeride.shootbug.repository.db.UserMapper;
 import org.freeride.shootbug.repository.db.UserRoleMapper;
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @RateLimited(value = "sendVerificationCode", period = 30, requestNum = 1, unit = TimeUnit.SECONDS)
+    @RateLimited(value = "sendVerificationCode", period = 30, requestNum = 1, unit = TimeUnit.SECONDS, type = RateLimitedType.IP)
     public String sendVerificationCode(String email) {
         if (verificationCodeRepository.existsById(email)) {
             throw new ApiException("请稍后获取验证码");
