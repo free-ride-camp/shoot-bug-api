@@ -13,5 +13,9 @@ public enum RateLimitedType {
     /**
      * 单个IP的同类请求计入限流
      */
-    IP
+    IP,
+    /**
+     * 单个用户的同类请求计入限流（需要登录的接口，才能使用）
+     */
+    USER
 }

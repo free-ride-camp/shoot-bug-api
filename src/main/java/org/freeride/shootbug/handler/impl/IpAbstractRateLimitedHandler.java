@@ -25,7 +25,7 @@ public class IpAbstractRateLimitedHandler extends AbstractRateLimitedHandler {
     public boolean isRequestLimited(RateLimitedBO rateLimitedInfo) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = request.getRemoteAddr();
-        String key = String.format("%s:%s", rateLimitedInfo.getKey(), ip);
+        String key = String.format("%s:ip:%s", rateLimitedInfo.getKey(), ip);
         return super.doCheck(key, rateLimitedInfo.getRequestNum(), rateLimitedInfo.getPeriod(), rateLimitedInfo.getUnit());
     }
 }

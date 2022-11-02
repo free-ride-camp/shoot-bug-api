@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class ApplicationAbstractRateLimitedHandler extends AbstractRateLimitedHandler {
+public class ApplicationRateLimitedHandler extends AbstractRateLimitedHandler {
 
     @Override
     public boolean supports(RateLimitedType type) {
