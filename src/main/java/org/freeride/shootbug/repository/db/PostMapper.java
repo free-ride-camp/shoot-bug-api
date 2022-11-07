@@ -5,6 +5,8 @@ import org.apache.ibatis.mapping.FetchType;
 import org.freeride.shootbug.entity.db.Post;
 import org.freeride.shootbug.repository.db.handler.JsonTypeHandler;
 
+import java.util.List;
+
 @Mapper
 public interface PostMapper {
 
@@ -14,4 +16,16 @@ public interface PostMapper {
             @Result(column = "tags", property = "tags", typeHandler = JsonTypeHandler.class),
     })
     Post findPostById(@Param("id") Integer id);
+
+    @Select("<script>" +
+            "select * from post " +
+            "<where>" +
+            "<if test='arg0 != null and arg0 != \"\"'>json_contains(tags, #{arg0}, '$')</if>" +
+            "<if test='arg1 != null and arg1 != \"\"'>and title like concat('%', #{arg1}, '%') or description like concat('%', #{arg1}, '%')</if>" +
+            "</where>" +
+            "</script>")
+    @Results({
+            @Result(column = "tags", property = "tags", typeHandler = JsonTypeHandler.class),
+    })
+    List<Post> findPosts(String tags, String searchText);
 }

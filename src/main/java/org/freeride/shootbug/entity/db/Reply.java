@@ -9,6 +9,6 @@ public class Reply {
     private Integer id;
     private Post post;
     private String content;
-    private String replier;
+    private User replier;
     private LocalDateTime replyTime;
 }

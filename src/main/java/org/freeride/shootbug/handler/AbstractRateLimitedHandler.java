@@ -26,7 +26,7 @@ public abstract class AbstractRateLimitedHandler {
     }
 
     @Autowired
-    public void setScript(RedisScript<Boolean> bucketRateLimiterScript) {
+    public void setBucketRateLimiterScript(RedisScript<Boolean> bucketRateLimiterScript) {
         this.bucketRateLimiterScript = bucketRateLimiterScript;
     }
 

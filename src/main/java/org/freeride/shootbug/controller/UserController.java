@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @Validated
+@RequestMapping("/user")
 public class UserController {
 
     @Resource
