@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.pagehelper.PageInfo;
 import org.freeride.shootbug.dto.response.PostReplyResponse;
 import org.freeride.shootbug.entity.db.Post;
+import org.freeride.shootbug.entity.db.type.PostStatusEnum;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 
 public interface ForumService {
-    PageInfo<Post> getPosts(Integer pageNum, Integer pageSize, List<String> tags, String searchText) throws JsonProcessingException;
+    PageInfo<Post> getPosts(Integer pageNum, Integer pageSize, List<String> tags, String searchText, PostStatusEnum postStatus, Integer userId) throws JsonProcessingException;
 
     PageInfo<PostReplyResponse> getPostReplies(Integer pageNum, Integer pageSize, Integer postId);
 }
