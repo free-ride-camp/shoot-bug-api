@@ -2,14 +2,12 @@ package org.freeride.shootbug.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.pagehelper.PageInfo;
+import org.freeride.shootbug.dto.request.ReplyPostRequest;
 import org.freeride.shootbug.dto.response.PostReplyResponse;
-import org.freeride.shootbug.entity.db.Post;
-import org.freeride.shootbug.entity.db.type.PostStatusEnum;
+import org.freeride.shootbug.po.db.Post;
+import org.freeride.shootbug.po.db.type.PostStatusEnum;
 import org.freeride.shootbug.service.ForumService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -41,6 +39,16 @@ public class ForumController {
                                                       @RequestParam(defaultValue = "10") Integer pageSize,
                                                       @RequestParam Integer postId) {
         return forumService.getPostReplies(pageNum, pageSize, postId);
+    }
+
+    @PostMapping("/replyPost")
+    public void replyPost(@RequestBody ReplyPostRequest replyPostRequest) {
+        forumService.replyPost(replyPostRequest);
+    }
+
+    @DeleteMapping("/deletePost")
+    public void deletePost() {
+
     }
 
 }

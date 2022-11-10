@@ -1,7 +1,7 @@
 package org.freeride.shootbug.service;
 
 import org.freeride.shootbug.dto.request.RegisterRequest;
-import org.freeride.shootbug.entity.db.User;
+import org.freeride.shootbug.po.db.User;
 
 /**
  * @author ZhaoHe(hezhao @ dianhun.cn)

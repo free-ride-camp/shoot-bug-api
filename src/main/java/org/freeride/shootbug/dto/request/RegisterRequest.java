@@ -1,7 +1,7 @@
 package org.freeride.shootbug.dto.request;
 
 import lombok.Data;
-import org.freeride.shootbug.entity.db.type.GenderEnum;
+import org.freeride.shootbug.po.db.type.GenderEnum;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;

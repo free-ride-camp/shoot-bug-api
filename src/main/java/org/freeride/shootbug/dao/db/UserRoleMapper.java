@@ -1,4 +1,4 @@
-package org.freeride.shootbug.repository.db;
+package org.freeride.shootbug.dao.db;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

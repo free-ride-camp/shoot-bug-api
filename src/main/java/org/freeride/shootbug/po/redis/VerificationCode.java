@@ -1,4 +1,4 @@
-package org.freeride.shootbug.entity.redis;
+package org.freeride.shootbug.po.redis;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;

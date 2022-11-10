@@ -1,8 +1,8 @@
-package org.freeride.shootbug.repository.db;
+package org.freeride.shootbug.dao.db;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.freeride.shootbug.entity.db.type.RoleEnum;
+import org.freeride.shootbug.po.db.type.RoleEnum;
 
 /**
  * @author ZhaoHe(hezhao @ dianhun.cn)

@@ -1,9 +1,9 @@
-package org.freeride.shootbug.entity.db;
+package org.freeride.shootbug.po.db;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-import org.freeride.shootbug.entity.db.type.PostStatusEnum;
+import org.freeride.shootbug.po.db.type.PostStatusEnum;
 
 import java.time.LocalDateTime;
 import java.util.List;

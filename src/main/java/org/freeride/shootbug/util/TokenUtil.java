@@ -2,7 +2,7 @@ package org.freeride.shootbug.util;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-import org.freeride.shootbug.entity.db.type.RoleEnum;
+import org.freeride.shootbug.po.db.type.RoleEnum;
 
 import javax.crypto.SecretKey;
 import java.util.Date;

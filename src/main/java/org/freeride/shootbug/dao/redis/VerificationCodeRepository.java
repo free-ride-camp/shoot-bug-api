@@ -1,6 +1,6 @@
-package org.freeride.shootbug.repository.redis;
+package org.freeride.shootbug.dao.redis;
 
-import org.freeride.shootbug.entity.redis.VerificationCode;
+import org.freeride.shootbug.po.redis.VerificationCode;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

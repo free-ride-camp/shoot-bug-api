@@ -1,4 +1,4 @@
-package org.freeride.shootbug.entity.db.type;
+package org.freeride.shootbug.po.db.type;
 
 public enum RoleEnum {
     SUPER_ADMIN, AUDITOR, NORMAL

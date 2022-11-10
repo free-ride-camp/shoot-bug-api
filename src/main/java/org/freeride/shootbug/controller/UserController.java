@@ -2,8 +2,8 @@ package org.freeride.shootbug.controller;
 
 import org.freeride.shootbug.dto.request.LoginRequest;
 import org.freeride.shootbug.dto.request.RegisterRequest;
-import org.freeride.shootbug.entity.db.User;
-import org.freeride.shootbug.entity.db.type.RoleEnum;
+import org.freeride.shootbug.po.db.User;
+import org.freeride.shootbug.po.db.type.RoleEnum;
 import org.freeride.shootbug.service.UserService;
 import org.freeride.shootbug.util.TokenUtil;
 import org.springframework.security.authentication.AuthenticationManager;

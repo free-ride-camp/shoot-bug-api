@@ -1,4 +1,4 @@
-package org.freeride.shootbug.entity.db;
+package org.freeride.shootbug.po.db;
 
 import lombok.Data;
 
@@ -11,4 +11,5 @@ public class Reply {
     private String content;
     private User replier;
     private LocalDateTime replyTime;
+    private Boolean isDeleted;
 }
