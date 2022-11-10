@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class PostReplyResponse {
-    private Integer id;
+    private String id;
     private String content;
     private String replierName;
     private String replierAvatar;

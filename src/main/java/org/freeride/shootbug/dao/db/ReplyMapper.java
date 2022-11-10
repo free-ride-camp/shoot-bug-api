@@ -1,5 +1,6 @@
 package org.freeride.shootbug.dao.db;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -21,8 +22,11 @@ public interface ReplyMapper {
             "u.avatar_url as replierAvatar, " +
             "r.reply_time as replyTime from reply r " +
             "join user u on r.post_id = #{postId} and u.id = r.replier_id")
-    List<PostReplyResponse> findPostReplies(Integer postId);
+    List<PostReplyResponse> findPostReplies(String postId);
 
-    @Insert("insert into reply values (null, #{arg1}, #{arg2}, #{arg0}, #{arg3}, false)")
-    int insertReply(Integer replierId, Integer postId, String content, LocalDateTime replyTime);
+    @Insert("insert into reply values (id, #{arg1}, #{arg2}, #{arg0}, #{arg3}, false)")
+    int insertReply(String id, Integer replierId, Integer postId, String content, LocalDateTime replyTime);
+
+    @Delete("delete from reply where id = #{arg0}")
+    int deleteReply(String id);
 }

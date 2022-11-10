@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class Reply {
-    private Integer id;
+    private String id;
     private Post post;
     private String content;
     private User replier;

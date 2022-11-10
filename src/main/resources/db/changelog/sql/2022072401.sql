@@ -39,7 +39,7 @@ create table if not exists tag (
 
 drop table if exists post;
 create table if not exists post (
-    id integer auto_increment primary key,
+    id char(32) primary key,
     creator_id integer not null,
     title varchar(255) not null,
     description varchar(255) null,
@@ -51,8 +51,8 @@ create table if not exists post (
 
 drop table if exists reply;
 create table if not exists reply (
-    id integer auto_increment primary key,
-    post_id integer not null,
+    id char(32) primary key,
+    post_id char(32) not null,
     content varchar(255) not null,
     replier_id integer not null,
     reply_time timestamp not null,

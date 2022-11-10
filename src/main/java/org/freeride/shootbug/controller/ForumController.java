@@ -2,6 +2,7 @@ package org.freeride.shootbug.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.pagehelper.PageInfo;
+import org.freeride.shootbug.dto.request.DeleteReplyRequest;
 import org.freeride.shootbug.dto.request.ReplyPostRequest;
 import org.freeride.shootbug.dto.response.PostReplyResponse;
 import org.freeride.shootbug.po.db.Post;
@@ -37,7 +38,7 @@ public class ForumController {
     @GetMapping("/getPostReplies")
     public PageInfo<PostReplyResponse> getPostReplies(@RequestParam(defaultValue = "1") Integer pageNum,
                                                       @RequestParam(defaultValue = "10") Integer pageSize,
-                                                      @RequestParam Integer postId) {
+                                                      @RequestParam String postId) {
         return forumService.getPostReplies(pageNum, pageSize, postId);
     }
 
@@ -47,8 +48,8 @@ public class ForumController {
     }
 
     @DeleteMapping("/deletePost")
-    public void deletePost() {
-
+    public void deletePost(@RequestBody DeleteReplyRequest deleteReplyRequest) {
+        forumService.deleteReply(deleteReplyRequest);
     }
 
 }

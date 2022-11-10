@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Post {
-    private Integer id;
+    private String id;
     private User creator;
     private String title;
     private String description;
